@@ -1,7 +1,9 @@
 package com.joaozada.bunniesclub.config;
 
 import com.joaozada.bunniesclub.entities.Membro;
+import com.joaozada.bunniesclub.entities.Usuario;
 import com.joaozada.bunniesclub.repositories.MembroRepo;
+import com.joaozada.bunniesclub.repositories.UsuarioRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +16,9 @@ public class TestConfig implements CommandLineRunner {
 
     @Autowired
     private MembroRepo membroRepo;
+
+    @Autowired
+    private UsuarioRepo usuarioRepo;
 
     @Override
     public void run (String... args) throws Exception {
@@ -43,5 +48,10 @@ public class TestConfig implements CommandLineRunner {
                 "https://static.wikia.nocookie.net/newjeans/images/8/8d/Hyein_Supernatural_Concept_Photo_%2810%29_11zon.png/revision/latest?cb=20240917144444&path-prefix=pt-br");
 
         membroRepo.saveAll(Arrays.asList(haerin,minji, hanni, danielle, hyein));
+
+
+        Usuario user1 = new Usuario(null, "João", "joao@gmail.com", hanni);
+        usuarioRepo.save(user1);
+
     }
 }
